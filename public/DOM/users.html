@@ -1,0 +1,293 @@
+
+<div class="row">
+    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+        <h1 class="page-title txt-color-blueDark">
+
+            <!-- PAGE HEADER -->
+            <i class="fa-fw fa fa-pencil-square-o"></i>
+            Users
+        </h1>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <!-- Button trigger modal -->
+        <a href="#{{toggle}}" ng-if="toggleVisible > 1" class="btn btn-success btn-md pull-right header-btn hidden-mobile">Toggle</a>
+    </div>
+
+    <!--<form method="post" action="user/add/role">-->
+        <!--<input name="_token" value="{{ token }}">-->
+        <!--<input name="role_id">-->
+        <!--<input name="user_id">-->
+        <!--<input type="submit">-->
+    <!--</form>-->
+</div>
+
+<div id="successMessage1" class="alert alert-block alert-success" hidden>
+    <a class="close" data-dismiss="alert" href="/#createRole">×</a>
+    <h4 class="alert-heading"><i class="fa fa-check-square-o"></i> Success!</h4>
+    <p>
+        User updated successfully...
+    </p>
+</div>
+
+<div id="deleteMessage1" class="alert alert-block alert-success" hidden>
+    <a class="close" data-dismiss="alert" href="/#createRole">×</a>
+    <h4 class="alert-heading"><i class="fa fa-times-circle-o"></i> Success!</h4>
+    <p>
+        User deleted successfully...
+    </p>
+</div>
+
+<div id="errorMessage1" class="alert alert-block alert-danger" hidden>
+    <a class="close" data-dismiss="alert" href="/#createRole">×</a>
+    <h4 class="alert-heading"><i class="fa fa-check-square-o"></i> Error(s)detected</h4>
+    <ul>
+        <li ng-repeat="val_error in error">{{val_error}}</li>
+    </ul>
+</div>
+
+<section id="widget-grid" class="">
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+        <!-- NEW COL START -->
+        <article class="col-sm-12 col-md-12 col-lg-6">
+
+            <div class="jarviswidget" id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false">
+
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-pencil-square-o"></i> </span>
+                    <h2>User</h2>
+                    <div id="newPermission" class="widget-toolbar " hidden>
+                        <a href="" ng-click="activateNew()"><span class="onoffswitch-title"><i class="fa fa-plus"></i> New</span></a>
+                    </div>
+                </header>
+
+                <!-- widget div-->
+                <div>
+
+                    <div id="successMessage" hidden ></div>
+                    <div id="errorMessage" hidden >
+                    <div id="errorMessageContent"></div>
+                        <ul>
+                            <li ng-repeat="val_error in error">{{val_error}}</li>
+                        </ul>
+                    </div>
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                        <!-- This area used as dropdown edit box -->
+
+                    </div>
+                    <!-- end widget edit box -->
+
+                    <!-- widget content -->
+                    <div class="widget-body no-padding">
+
+                        <div ng-if="!selectedPermissions[0]" style="padding-top: 40px; text-align: center" hidden>Nothing selected!</div>
+
+                        <!-- widget content -->
+                        <div class="widget-body" style="height: 150px" hidden id="dropzone">
+                            <form class="dropzone" id="avatardropzone">
+                                <input name="_token" value="{{csrf}}" hidden>
+                                <input name="uId" value="{{selectedUsers[0].id}}" hidden>
+                                <!--<input type="file" id="attachAfile" name="projectFile"/>-->
+                            </form>
+                        </div>
+                        <!-- end widget content -->
+
+                        <form id="frm_createUser" name="frm_createUser" class="smart-form" ng-submit="createUser(user)">
+
+                            <fieldset>
+                                <div class="row">
+                                    <section class="col col-6">
+                                        <label class="label">Name:</label>
+                                        <label class="input"> <i class="icon-prepend fa fa-circle-o"></i>
+                                            <input id="create_name" autocomplete="off" type="text"  name="name" ng-model="user.name">
+                                        </label>
+                                    </section>
+                                </div>
+                                <div class="row">
+                                    <section class="col col-lg-12">
+                                        <label class="label">Email:</label>
+                                        <label class="input"> <i class="icon-prepend fa fa-circle-o"></i>
+                                            <input autocomplete="off" type="text"  name="email" ng-model="user.email">
+                                        </label>
+                                    </section>
+                                </div>
+                            </fieldset>
+
+                            <footer>
+                                <button type="submit" class="btn btn-primary">
+                                    Create
+                                </button>
+                            </footer>
+                        </form>
+
+                        <form id="frm_viewEditUser" name="frm_viewEditUser" class="smart-form" ng-submit="editUser(selectedUsers[0])" hidden>
+
+                            <fieldset>
+                                <div class="col-lg-6">
+                                    <section class="col-1g-12">
+                                        <label class="label">Name:</label>
+                                        <label class="input"> <i class="icon-prepend fa fa-circle-o"></i>
+                                            <input autocomplete="off" type="text" ng-model="selectedUsers[0].name" name="name" >
+                                        </label>
+                                    </section>
+                                    <section class="col-lg-12">
+                                        <label class="label">Email:</label>
+                                        <label class="input"> <i class="icon-prepend fa fa-circle-o"></i>
+                                            <input autocomplete="off" type="text" ng-model="selectedUsers[0].email" name="email" >
+                                        </label>
+                                    </section>
+                                </div>
+
+                                <div class="col-lg-6" style="text-align: center; ">
+                                    <div id="imageHolder">
+                                        <img src="assets/img/avatars/{{selectedUsers[0].avatar}}" width="100px" height="130px" style="padding:1px;  border:1px solid #021a40;">
+                                        <br><a href="" ng-click="photoUploader(selectedUsers[0].id)">Change avatar</a>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <input autocomplete="off" type="hidden" ng-model="selectedUsers[0].id" name="roleId" >
+                            <hr>
+
+                            <div id="permissionAlerts" hidden></div>
+
+                            <fieldset>
+                                <div class="col-md-6">
+                                    <b>Roles for this user</b>
+                                    <p ng-repeat="role in selectedUsers[0].roles">&nbsp;<a href=""><i ng-click="deleteRole(selectedUsers[0].id,role.id)" style="color: darkred" class="fa fa-times-circle "></i></a> - {{role.name}} </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="label"><b>Add Role</b></label>
+                                    <div class="col-md-10">
+                                        <section>
+                                            <label class="select">
+                                                <select class="input-sm" name="rle" id="rle">
+                                                    <option ng-repeat="rle in allRoles" value="{{rle.id}}">{{rle.name}} -- {{rle.description}}</option>
+                                                </select> <i></i> </label>
+                                        </section>
+                                    </div>
+                                    <div class="col-md-2" >
+                                        &nbsp;<a href=""><i ng-click="addRole(selectedUsers[0].id)" class="fa fa-2x fa-plus-circle"></i></a>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <div id="warningMessage" hidden ></div>
+
+                            <footer>
+
+                                <button type="submit" class="btn btn-success">
+                                    Update
+                                </button>
+                                <span id="deleteRole">
+                                    <a class="btn btn-danger" ng-click="confirmDelete()">Delete</a>
+                                </span>
+                                <span hidden id="deleteRoleConfirm">
+                                    <a class="btn btn-warning" ng-click="cancelDelete()" hidden>Cancel</a>
+                                    <a class="btn btn-danger" ng-click="deleteUser(selectedUsers[0].id)" hidden>Confim Delete</a>
+                                </span>
+
+                                <!--<a class="btn btn-danger" href="#/delete" data-action="userLogout" data-logout-msg="The role and its permissions will be deleted...">Delete</a>-->
+
+                            </footer>
+
+
+                        </form>
+                    </div>
+                    <!-- end widget content -->
+
+                </div>
+                <!-- end widget div -->
+
+            </div>
+            <!-- end widget -->
+
+
+
+        </article>
+        <!-- END COL -->
+
+        <!-- NEW COL START -->
+        <article class="col-sm-12 col-md-12 col-lg-6">
+
+            <div class="jarviswidget" id="wid-id-4" data-widget-editbutton="false" data-widget-custombutton="false">
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-list"></i> </span>
+                    <h2>All Users</h2>
+
+                </header>
+
+                <!-- widget div-->
+                <div style="max-height: 650px; overflow: auto">
+
+                    <!-- widget content -->
+                    <div class="widget-body ">
+
+                        <div class="jarviswidget " id="wid-id-0" data-widget-editbutton="false">
+
+                            <div>
+
+                                <!-- widget edit box -->
+                                <div class="jarviswidget-editbox">
+                                    <!-- This area used as dropdown edit box -->
+
+                                </div>
+                                <!-- end widget edit box -->
+
+                                <!-- widget content -->
+                                <div class="widget-body no-padding">
+
+                                    <table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">
+                                        <!--<table datatable="ng" dt-options="dtOptions">-->
+                                        <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr ng-repeat="user in allUsers">
+                                            <td>{{user.name}}</td>
+                                            <td>{{user.email}}</td>
+                                            <td style="text-align: center"><a href="" ng-click="loadUserView(user.id)"><i class="fa fa-lg fa-search-plus"></i></a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <!-- end widget content -->
+
+                            </div>
+                            <!-- end widget div -->
+
+                        </div>
+                    </div>
+                    <!-- end widget content -->
+
+                </div>
+                <!-- end widget div -->
+
+            </div>
+            <!-- end widget -->
+
+        </article>
+        <!-- END COL -->
+
+    </div>
+
+    <!-- END ROW -->
+
+</section>
+
+<!-- MAIN CONTENT -->
+
+
+
+
+

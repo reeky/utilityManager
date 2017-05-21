@@ -1,0 +1,194 @@
+
+<div class="row">
+    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+        <h1 class="page-title txt-color-blueDark">
+
+            <!-- PAGE HEADER -->
+            <i class="fa-fw fa fa-pencil-square-o"></i>
+            Create Role
+        </h1>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <!-- Button trigger modal -->
+        <a href="#{{toggle}}" ng-if="toggleVisible > 1" class="btn btn-success btn-md pull-right header-btn hidden-mobile">Toggle</a>
+    </div>
+
+    <!--<form method="post" action="roles">-->
+        <!--<input name="_token" value="{{ token }}">-->
+        <!--<input name="name">-->
+        <!--<input name="description">-->
+        <!--<input type="submit">-->
+    <!--</form>-->
+</div>
+
+<div id="successMessage" class="alert alert-block alert-success" hidden>
+    <a class="close" data-dismiss="alert" href="/#createRole">×</a>
+    <h4 class="alert-heading"><i class="fa fa-check-square-o"></i> Success!</h4>
+    <p>
+        You have successfully created a role.
+    </p>
+</div>
+
+<div id="errorMessage" class="alert alert-block alert-danger" hidden>
+    <a class="close" data-dismiss="alert" href="/#createRole">×</a>
+    <h4 class="alert-heading"><i class="fa fa-check-square-o"></i> Error(s)detected</h4>
+    <ul>
+        <li ng-repeat="val_error in error">{{val_error}}</li>
+    </ul>
+</div>
+
+<section id="widget-grid" class="">
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+        <!-- NEW COL START -->
+        <article class="col-sm-12 col-md-12 col-lg-6">
+
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div class="jarviswidget" id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false">
+                <!-- widget options:
+                    usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+                    data-widget-colorbutton="false"
+                    data-widget-editbutton="false"
+                    data-widget-togglebutton="false"
+                    data-widget-deletebutton="false"
+                    data-widget-fullscreenbutton="false"
+                    data-widget-custombutton="false"
+                    data-widget-collapsed="true"
+                    data-widget-sortable="false"
+
+                -->
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-plus"></i> </span>
+                    <h2>New Role </h2>
+
+                </header>
+
+                <!-- widget div-->
+                <div>
+
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                        <!-- This area used as dropdown edit box -->
+
+                    </div>
+                    <!-- end widget edit box -->
+
+                    <!-- widget content -->
+                    <div class="widget-body no-padding">
+
+                        <form id="frm_createRole" name="frm_createRole" class="smart-form" ng-submit="createRole(role)">
+
+                            <fieldset>
+                                <div class="row">
+                                    <section class="col col-6">
+                                        <label class="label">Role name:</label>
+                                        <label class="input"> <i class="icon-prepend fa fa-circle-o"></i>
+                                            <input id="name" autocomplete="off" type="text"  name="name" ng-model="role.name">
+                                        </label>
+                                    </section>
+                                </div>
+                                <div class="row">
+                                    <section class="col col-lg-12">
+                                        <label class="label">Role description:</label>
+                                        <label class="input"> <i class="icon-prepend fa fa-circle-o"></i>
+                                            <input autocomplete="off" type="text"  name="description" ng-model="role.description">
+                                        </label>
+                                    </section>
+                                </div>
+                            </fieldset>
+
+                                <footer>
+                                <button type="submit" class="btn btn-primary">
+                                    Create
+                                </button>
+                            </footer>
+                        </form>
+                    </div>
+                    <!-- end widget content -->
+
+                </div>
+                <!-- end widget div -->
+
+            </div>
+            <!-- end widget -->
+
+
+
+        </article>
+        <!-- END COL -->
+
+        <!-- NEW COL START -->
+        <article class="col-sm-12 col-md-12 col-lg-6">
+
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div class="jarviswidget" id="wid-id-4" data-widget-editbutton="false" data-widget-custombutton="false">
+                <!-- widget options:
+                    usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                    data-widget-colorbutton="false"
+                    data-widget-editbutton="false"
+                    data-widget-togglebutton="false"
+                    data-widget-deletebutton="false"
+                    data-widget-fullscreenbutton="false"
+                    data-widget-custombutton="false"
+                    data-widget-collapsed="true"
+                    data-widget-sortable="false"
+
+                -->
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-list"></i> </span>
+                    <h2>All Roles and Permissions</h2>
+
+                </header>
+
+                <!-- widget div-->
+                <div style="max-height: 600px; overflow: auto">
+
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                        <!-- This area used as dropdown edit box -->
+
+                    </div>
+                    <!-- end widget edit box -->
+
+                    <!-- widget content -->
+                    <div class="widget-body ">
+
+                        <div class="tree">
+                            <ul role="tree">
+
+                                <li ng-repeat="role in roles" class="parent_li" role="treeitem" >
+                                    <span ng-click="editTree('tree'+role.id,'treeul'+role.id)"><i id="treeul{{role.id}}" class="fa fa-lg fa-plus-circle "></i> {{role.name}}</span>&nbsp;<a href=""><a href="#/role/{{role.id}}"><i style="color: red" class="fa fa-lg fa-wrench"></i></a></a> &ndash; <a href="#/role/{{role.id}}">{{role.description}}</a>
+                                    <ul id="tree{{role.id}}" hidden>
+                                        <li ng-repeat="permission in role.permissions">
+                                            <span><i class="fa "></i> {{permission.name}}</span> &ndash; <a>{{permission.description}}</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                    <!-- end widget content -->
+
+                </div>
+                <!-- end widget div -->
+
+            </div>
+            <!-- end widget -->
+
+        </article>
+        <!-- END COL -->
+
+    </div>
+
+    <!-- END ROW -->
+
+</section>
+

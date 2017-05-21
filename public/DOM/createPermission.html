@@ -1,0 +1,222 @@
+
+<div class="row">
+    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+        <h1 class="page-title txt-color-blueDark">
+
+            <!-- PAGE HEADER -->
+            <i class="fa-fw fa fa-pencil-square-o"></i>
+            Create Permission
+        </h1>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <!-- Button trigger modal -->
+        <a href="#{{toggle}}" ng-if="toggleVisible > 1" class="btn btn-success btn-md pull-right header-btn hidden-mobile">Toggle</a>
+    </div>
+
+    <!--<form method="post" action="permissions">-->
+        <!--<input name="_token" value="{{ token }}">-->
+        <!--<input name="name">-->
+        <!--<input name="description">-->
+        <!--<input type="submit">-->
+    <!--</form>-->
+</div>
+
+<section id="widget-grid" class="">
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+        <!-- NEW COL START -->
+        <article class="col-sm-12 col-md-12 col-lg-6">
+
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div class="jarviswidget" id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false">
+                <!-- widget options:
+                    usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+                    data-widget-colorbutton="false"
+                    data-widget-editbutton="false"
+                    data-widget-togglebutton="false"
+                    data-widget-deletebutton="false"
+                    data-widget-fullscreenbutton="false"
+                    data-widget-custombutton="false"
+                    data-widget-collapsed="true"
+                    data-widget-sortable="false"
+
+                -->
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-plus"></i> </span>
+                    <h2>New Permission </h2>
+
+                </header>
+
+                <!-- widget div-->
+                <div>
+                    <div id="successMessage" hidden ></div>
+                    <div id="errorMessage" hidden >
+                    <div id="errorMessageContent"></div>
+                        <ul>
+                            <li ng-repeat="val_error in error">{{val_error}}</li>
+                        </ul>
+                    </div>
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                        <!-- This area used as dropdown edit box -->
+
+                    </div>
+                    <!-- end widget edit box -->
+
+                    <!-- widget content -->
+                    <div class="widget-body no-padding">
+
+                        <form id="frm_createPermission" name="frm_createRole" class="smart-form" ng-submit="createPermission(perm)">
+
+                            <fieldset>
+                                <div class="row">
+                                    <section class="col col-6">
+                                        <label class="label">Permission name:</label>
+                                        <label class="input"> <i class="icon-prepend fa fa-circle-o"></i>
+                                            <input id="name" autocomplete="off" type="text"  name="name" ng-model="perm.name">
+                                        </label>
+                                    </section>
+                                </div>
+                                <div class="row">
+                                    <section class="col col-lg-12">
+                                        <label class="label">Permission description:</label>
+                                        <label class="input"> <i class="icon-prepend fa fa-circle-o"></i>
+                                            <input autocomplete="off" type="text"  name="description" ng-model="perm.description">
+                                        </label>
+                                    </section>
+                                </div>
+                            </fieldset>
+
+                                <footer>
+                                <button type="submit" class="btn btn-primary">
+                                    Create
+                                </button>
+                            </footer>
+                        </form>
+                    </div>
+                    <!-- end widget content -->
+
+                </div>
+                <!-- end widget div -->
+
+            </div>
+            <!-- end widget -->
+
+
+
+        </article>
+        <!-- END COL -->
+
+        <!-- NEW COL START -->
+        <article class="col-sm-12 col-md-12 col-lg-6">
+
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div class="jarviswidget" id="wid-id-4" data-widget-editbutton="false" data-widget-custombutton="false">
+                <!-- widget options:
+                    usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                    data-widget-colorbutton="false"
+                    data-widget-editbutton="false"
+                    data-widget-togglebutton="false"
+                    data-widget-deletebutton="false"
+                    data-widget-fullscreenbutton="false"
+                    data-widget-custombutton="false"
+                    data-widget-collapsed="true"
+                    data-widget-sortable="false"
+
+                -->
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-list"></i> </span>
+                    <h2>All Permissions</h2>
+
+                </header>
+
+                <!-- widget div-->
+                <div style="max-height: 650px; overflow: auto">
+
+                    <!-- widget content -->
+                    <div class="widget-body ">
+
+                        <div class="jarviswidget " id="wid-id-0" data-widget-editbutton="false">
+                            <!-- widget options:
+                            usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                            data-widget-colorbutton="false"
+                            data-widget-editbutton="false"
+                            data-widget-togglebutton="false"
+                            data-widget-deletebutton="false"
+                            data-widget-fullscreenbutton="false"
+                            data-widget-custombutton="false"
+                            data-widget-collapsed="true"
+                            data-widget-sortable="false"
+
+                            -->
+
+
+                            <!-- widget div-->
+                            <div>
+
+                                <!-- widget edit box -->
+                                <div class="jarviswidget-editbox">
+                                    <!-- This area used as dropdown edit box -->
+
+                                </div>
+                                <!-- end widget edit box -->
+
+                                <!-- widget content -->
+                                <div class="widget-body no-padding">
+
+                                    <table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">
+                                        <!--<table datatable="ng" dt-options="dtOptions">-->
+                                        <thead>
+                                        <tr>
+                                            <th>Permission</th>
+                                            <th>Description</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr ng-repeat="permission in allPermissions">
+                                            <td>{{permission.name}}</td>
+                                            <td>{{permission.description}}</td>
+                                            <td style="text-align: center"><a href="#/permission/{{permission.id}}"><i class="fa fa-lg fa-search-plus"></i></a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <!-- end widget content -->
+
+                            </div>
+                            <!-- end widget div -->
+
+                        </div>
+                    </div>
+                    <!-- end widget content -->
+
+                </div>
+                <!-- end widget div -->
+
+            </div>
+            <!-- end widget -->
+
+        </article>
+        <!-- END COL -->
+
+    </div>
+
+    <!-- END ROW -->
+
+</section>
+
+<!-- MAIN CONTENT -->
+
+
+
+
+

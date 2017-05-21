@@ -1,0 +1,187 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+        <h1 class="page-title txt-color-blueDark">
+
+            <!-- PAGE HEADER -->
+            <i class="fa-fw fa fa-user-md"></i>
+            Address
+        </h1>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <!-- Button trigger modal -->
+        <a href="#{{toggle}}" ng-if="toggleVisible > 1" class="btn btn-success btn-md pull-right header-btn hidden-mobile" style="margin-left: 10px">Toggle</a>
+        <a ng-controller="addressModalController" class="btn btn-primary btn-md pull-right header-btn hidden-mobile" ng-click="open(project[0].id)"><i class="fa fa-circle-arrow-up fa-lg"></i>Create Address</a>
+
+    </div>
+</div>
+
+<div class="row">
+    <!-- NEW WIDGET START -->
+    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+
+
+
+
+        <form id="frm_createUser1" name="frm_createUser" class="smart-form" ng-submit="createUser(user)">
+
+            <fieldset>
+                <div class="row">
+                    <section class="col col-6">
+                        <label class="label">Name:</label>
+                        <label class="input"> <i class="icon-prepend fa fa-circle-o"></i>
+                            <input id="create_names" autocomplete="off" type="text"  name="name" ng-model="user.name">
+                        </label>
+                    </section>
+                </div>
+                <div class="row">
+                    <section class="col col-lg-12">
+                        <label class="label">Email:</label>
+                        <label class="input"> <i class="icon-prepend fa fa-circle-o"></i>
+                            <input autocomplete="off" type="text"  name="email" ng-model="user.email">
+                        </label>
+                    </section>
+                </div>
+            </fieldset>
+
+            <footer>
+                <button type="submit" class="btn btn-primary">
+                    Create
+                </button>
+            </footer>
+        </form>
+
+        <!-- Widget ID (each widget will need unique ID)-->
+        <div class="jarviswidget well" id="wid-id-0">
+            <!-- widget options:
+                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                data-widget-colorbutton="false"
+                data-widget-editbutton="false"
+                data-widget-togglebutton="false"
+                data-widget-deletebutton="false"
+                data-widget-fullscreenbutton="false"
+                data-widget-custombutton="false"
+                data-widget-collapsed="true"
+                data-widget-sortable="false"
+
+            -->
+            <header>
+                <span class="widget-icon"> <i class="fa fa-comments"></i> </span>
+                <h2>Widget Title </h2>
+
+            </header>
+
+            <!-- widget div-->
+            <div>
+
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox">
+                    <!-- This area used as dropdown edit box -->
+                    <input class="form-control" type="text">
+                </div>
+                <!-- end widget edit box -->
+
+                <!-- widget content -->
+                <div class="widget-body no-padding">
+
+                    <table id="example" class="display projects-table table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th></th><th>Projects</th><th><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> EST</th>
+                            <th>Contacts</th>
+                            <th>Status</th>
+                            <th><i class="fa fa-circle txt-color-darken font-xs"></i> Target/ <i class="fa fa-circle text-danger font-xs"></i> Actual</th>
+                            <th><i class="fa fa-fw fa-calendar text-muted hidden-md hidden-sm hidden-xs"></i> Starts</th>
+                            <th><i class="fa fa-fw fa-calendar text-muted hidden-md hidden-sm hidden-xs"></i> Ends</th>
+                            <th>Tracker</th>
+                        </tr>
+                        </thead>
+                    </table>
+
+                </div>
+                <!-- end widget content -->
+
+            </div>
+            <!-- end widget div -->
+
+        </div>
+        <!-- end widget -->
+
+    </article>
+    <!-- WIDGET END -->
+
+</div>
+
+<!-- end row -->
+
+<!-- row -->
+
+<div class="row">
+
+    <!-- a blank row to get started -->
+    <div class="col-sm-12">
+        <!-- your contents here -->
+    </div>
+
+</div>
+
+<!-- end row -->
+
+<!-- Modal Members-->
+<div ng-controller="addressModalController">
+    <script type="text/ng-template" id="createAuthorModal.html">
+
+        <div class="modal-header">
+            <h3 class="modal-title">Address</h3>
+        </div>
+
+
+
+
+
+            <form id="frm_createUser" name="frm_createUser" class="smart-form" ng-submit="createAuthor(user)" ng-controller="addressModalController">
+
+                <fieldset>
+                    <div class="row">
+                        <section class="col col-6">
+                            <label class="label">Name:</label>
+                            <label class="input"> <i class="icon-prepend fa fa-circle-o"></i>
+                                <input id="create_name" autocomplete="off" type="text"  name="name" ng-model="user.name">
+                            </label>
+                        </section>
+                    </div>
+                    <div class="row">
+                        <section class="col col-lg-12">
+                            <label class="label">Email:</label>
+                            <label class="input"> <i class="icon-prepend fa fa-circle-o"></i>
+                                <input autocomplete="off" type="text"  name="email" ng-model="user.email">
+                            </label>
+                        </section>
+                    </div>
+                </fieldset>
+
+                <footer>
+                    <button type="submit" class="btn btn-primary">
+                        Create
+                    </button>
+                    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+
+                </footer>
+
+        </form>
+
+
+    </script>
+</div>
+<!-- end modal-->
+
+
+
+
+
+
+
+
+

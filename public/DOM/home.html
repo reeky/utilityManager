@@ -1,0 +1,145 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+        <h1 class="page-title txt-color-blueDark">
+
+            <!-- PAGE HEADER -->
+            <i class="fa-fw fa fa-pencil-square-o"></i>
+            user Profile
+        </h1>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <!-- Button trigger modal -->
+        <a href="#{{toggle}}" ng-if="toggleVisible > 1" class="btn btn-success btn-md pull-right header-btn hidden-mobile">Toggle</a>
+    </div>
+</div>
+
+<div class="well well-sm">
+
+    <div class="row">
+
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="well well-light well-sm no-margin no-padding">
+
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <div id="myCarousel" class="carousel fade profile-carousel">
+
+                            <div class="air air-top-left padding-10">
+                                <h4 class="txt-color-white font-md">{{ $date }}</h4>
+                            </div>
+                            <ol class="carousel-indicators">
+                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+                                <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <!-- Slide 1 -->
+                                <div class="item active">
+                                    <img class="col-lg-12" src="assets/img/demo/s1.jpg" alt="demo user" style="padding: 0">
+                                </div>
+                                <!-- Slide 2 -->
+                                <div class="item">
+                                    <img class="col-lg-12" src="assets/img/demo/s2.jpg" alt="demo user" style="padding: 0">
+                                </div>
+                                <!-- Slide 3 -->
+                                <div class="item">
+                                    <img class="col-lg-12" src="assets/img/demo/m3.jpg" alt="demo user" style="padding: 0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+
+                        <div class="row">
+
+                            <div class="col-sm-3 profile-pic">
+                                <img src="assets/img/avatars/{{user[0].avatar}}" alt="{{user[0].name}}">
+                            </div>
+                            <div class="col-sm-5">
+                                <h1>{{user[0].name}}</h1>
+
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <p class="text-muted">
+                                            <i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="">{{user[0].email}}</a>
+                                        </p>
+                                    </li>
+                                </ul>
+                                <br>
+                                <br>
+                                <div id="changePassButton"><a href="javascript:void(0);" class="btn btn-default btn-xs" ng-click="activatePasswordChange()"><i class="fa fa-key"></i>Change password</a></div>
+                                <br>
+                                <br>
+
+                            </div>
+                            <div class="col-sm-4">
+                                <div id="passwordDiv" style="border-left: solid lightgrey 1px; " hidden>
+                                <h1 style="margin-left: 10px"><small>Change Password</small></h1>
+                                    <div id="successMessage" hidden ></div>
+                                    <div id="errorMessage" hidden >
+                                        <div id="errorMessageContent"></div>
+                                        <ul>
+                                            <li ng-repeat="val_error in error">{{val_error}}</li>
+                                        </ul>
+                                    </div>
+                                    <form id="frm_changePass" novalidate name="frm_changePass" class="smart-form" ng-submit="changePassword(changePass, user[0].id)">
+                                        <fieldset>
+
+                                            <section class="col col-lg-12">
+                                                <label class="label">New password</label>
+                                                <label class="input"> <i class="icon-prepend fa fa-circle-o"></i>
+                                                    <input autocomplete="off" type="password"  name="newPassword" ng-model="changePass.newPassword">
+                                                </label>
+                                            </section>
+
+
+                                                <section class="col col-lg-12">
+                                                    <label class="label">Confirm password</label>
+                                                    <label class="input"> <i class="icon-prepend fa fa-circle-o"></i>
+                                                        <input autocomplete="off" type="password"  name="confirmPassword" ng-model="changePass.confirmPassword">
+                                                    </label>
+                                                </section>
+
+                                        </fieldset>
+                                        <div id="warningMessage" hidden ></div>
+
+                                        <footer>
+                                            <button type="submit" class="btn btn-primary">
+                                                Change
+                                            </button>
+                                            <a ng-click="cancel()" class="btn btn-warning">
+                                                Cancel
+                                            </a>
+
+                                        </footer>
+                                    </form>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- end row -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+</div>
+
+<!-- end row -->
