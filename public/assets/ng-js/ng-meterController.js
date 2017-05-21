@@ -21,17 +21,15 @@ this.meterController = function ($scope, $http, $location, UserService, USER_ID,
             };
         });
 
-    $scope.reloadPage = function() {
 
+    $scope.runMeter = function() {
         var units = Array(510,815,400,460,612,550,750,720,475,490,590,710,635,660,680,500,220,350);
         var unitsUsed = units[Math.floor(Math.random()*units.length)];
 
         UserService.meterReading = UserService.meterReading+unitsUsed;
         readingDate = readingDate+oneDay;
-        console.log(readingDate);
-        console.log(unitsUsed);
         $scope.meter = UserService.meterReading;
-        $scope.$apply();
+        // $scope.$apply();
 
         $http.post(UserService.globalRoot + "/readings", {
             '_token': $scope._token,
@@ -43,17 +41,34 @@ this.meterController = function ($scope, $http, $location, UserService, USER_ID,
         }).success(function () {
 
         });
+    };
+
+
+    $scope.reloadPage = function() {
+
+        // GET ACCOUNT INFORMATION
+        $http.get(UserService.globalRoot + "/accounts/"+currentId)
+            .then(function (response) {
+                $scope.accounts = response.data;
+
+                if($scope.accounts[0]['status']==1){
+                        $scope.runMeter();
+                };
+
+            });
+        // END ACCOUNT INFORMATION
+
+
+
+
+
 
 
     };
 
-    var refreshIntervalId;
-
-    $scope.start = function(){
-        refreshIntervalId =setInterval(function(){
+    var refreshIntervalId =setInterval(function(){
             $scope.reloadPage();
         }, 1000);
-    };
 
     $scope.stop = function(){
         clearInterval(refreshIntervalId);
