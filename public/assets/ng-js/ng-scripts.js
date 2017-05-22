@@ -51,7 +51,8 @@ var globalRoot = window.location.origin;
             oringinRoute : '',
             globalUid : 451,
             globalRoot : window.location.origin,
-            meterReading: 300201
+            meterReading: '',
+            readingDate: 0
         };
     });
 
@@ -182,7 +183,7 @@ var globalRoot = window.location.origin;
                     }
                 },
                 templateUrl: "DOM/accountDetail.html",
-                controller: "addressController"
+                controller: "accountController"
             })
             .when("/accountList", {
                 resolve:{
@@ -231,7 +232,9 @@ var globalRoot = window.location.origin;
     app.controller("permissionsController", permissionsController);
     app.controller("addressController", addressController);
     app.controller("addressModalController", addressModalController);
+    app.controller("topupModalController", topupModalController);
     app.controller("authorsModalControllerInstance", authorsModalControllerInstance);
+    app.controller("topupModalControllerInstance", topupModalControllerInstance);
     app.controller("accountController", accountController);
 
 

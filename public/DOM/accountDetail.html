@@ -46,7 +46,7 @@
                         <br>
                         <button class="btn btn-success" ng-click="startMeter()" ng-if="accounts[0].status == 0">Start Meter</button>
                         <button class="btn btn-danger" ng-click="stopMeter()" ng-if="accounts[0].status == 1">Stop Meter</button>
-                        <a ng-controller="addressModalController" class="btn btn-primary btn-md pull-right header-btn hidden-mobile" ng-click="open(project[0].id)"><i class="fa fa-circle-arrow-up fa-lg"></i>Top up</a>
+                        <a ng-controller="topupModalController" class="btn btn-primary btn-md pull-right header-btn hidden-mobile" ng-click="open(project[0].id)"><i class="fa fa-circle-arrow-up fa-lg"></i>Top up</a>
                     </div>
                     <div class="col-sm-9">
 
@@ -151,6 +151,55 @@
 </div>
 
 <!-- end row -->
+
+
+<!-- Modal Members-->
+<div ng-controller="topupModalController">
+    <script type="text/ng-template" id="topupModal.html">
+
+        <div class="modal-header">
+            <h3 class="modal-title">Top Up</h3>
+        </div>
+
+
+
+
+
+        <form id="frm_createUser" name="frm_createUser" class="smart-form" ng-submit="createAuthor(user)" ng-controller="topupModalController">
+
+            <fieldset>
+                <div class="row">
+                    <section class="col col-6">
+                        <label class="label">Name:</label>
+                        <label class="input"> <i class="icon-prepend fa fa-circle-o"></i>
+                            <input id="create_name" autocomplete="off" type="text"  name="name" ng-model="user.name">
+                        </label>
+                    </section>
+                </div>
+                <div class="row">
+                    <section class="col col-lg-12">
+                        <label class="label">Email:</label>
+                        <label class="input"> <i class="icon-prepend fa fa-circle-o"></i>
+                            <input autocomplete="off" type="text"  name="email" ng-model="user.email">
+                        </label>
+                    </section>
+                </div>
+            </fieldset>
+
+            <footer>
+                <button type="submit" class="btn btn-primary">
+                    Create
+                </button>
+                <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+
+            </footer>
+
+        </form>
+
+
+    </script>
+</div>
+<!-- end modal-->
 
 
 

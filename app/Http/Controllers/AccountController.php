@@ -76,6 +76,15 @@ class AccountController extends Controller
         ));
     }
 
+    public function updateReading(Request $request, $id)
+    {
+
+        Account::where('account_number',$id)->update(array(
+            'last_reading'=>Input::get('lastReading'),
+            'last_reading_date'=>Input::get('lastReadingDate')
+        ));
+    }
+
     /**
      * Remove the specified resource from storage.
      *

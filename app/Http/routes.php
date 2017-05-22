@@ -18,6 +18,10 @@ Route::group(['middleware' => ['before'=>'auth']], function(){
     Route::resource('permissions','PermissionsController');
     Route::resource('readings','ReadingsController');
     Route::resource('accounts','AccountController');
+
+    Route::post('updateReading/{id}', ['as' => 'update_reading', 'uses' => 'AccountController@updateReading']);
+
+
     Route::get('/permissions/{roleId}/role', ['as' => 'get_all_permissions_for_role', 'uses' => 'PermissionsController@permissions']);
     Route::post('/permission/{roleId}/{permissionId}/delete', ['as' => 'delete_permissions_for_role', 'uses' => 'PermissionsController@deleteRolePermission']);
     Route::post('/permissions/permission_role', ['as' => 'store_permissions_for_role', 'uses' => 'PermissionsController@storePermissions']);
@@ -35,11 +39,12 @@ Route::get('/user/roles/{role}', ['as' => 'user_role', 'uses' => 'UserController
 Route::get('/welcome', 'HomeController@welcome');
 Route::get('/userRoles/{id}', 'UserController@userRoles');
 
+
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/meter/{id}', 'HomeController@meter');
-Route::get('/qurans', 'QuranController@indexx');
+
 
 
 
