@@ -11,8 +11,6 @@
     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
         <!-- Button trigger modal -->
         <a href="#{{toggle}}" ng-if="toggleVisible > 1" class="btn btn-success btn-md pull-right header-btn hidden-mobile" style="margin-left: 10px">Toggle</a>
-        <a ng-controller="addressModalController" class="btn btn-primary btn-md pull-right header-btn hidden-mobile" ng-click="open(project[0].id)"><i class="fa fa-circle-arrow-up fa-lg"></i>Connection History</a>
-
     </div>
 </div>
 
@@ -43,12 +41,12 @@
 
                     <div class="col-sm-3">
 
-                        <h3>Power Usage</h3>
-                        <h1>2000 Watts</h1>
+                        <h3>Units used</h3>
+                        <h1>2000 units</h1>
                         <br>
                         <button class="btn btn-success" ng-click="startMeter()" ng-if="accounts[0].status == 0">Start Meter</button>
                         <button class="btn btn-danger" ng-click="stopMeter()" ng-if="accounts[0].status == 1">Stop Meter</button>
-
+                        <a ng-controller="addressModalController" class="btn btn-primary btn-md pull-right header-btn hidden-mobile" ng-click="open(project[0].id)"><i class="fa fa-circle-arrow-up fa-lg"></i>Top up</a>
                     </div>
                     <div class="col-sm-9">
 
