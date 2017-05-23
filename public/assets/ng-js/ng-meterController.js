@@ -8,6 +8,8 @@ this.meterController = function ($scope, $http, $location, UserService, USER_ID,
     var url = window.location.pathname;
     var currentId = url.substring(url.lastIndexOf('/') + 1);
 
+    $scope.meterId = currentId;
+
     // $http.get(UserService.globalRoot + "/accounts/"+currentId)
     //     .then(function (response) {
     //         $scope.accounts = response.data;
