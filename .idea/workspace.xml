@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3ae3ceb9-783e-487b-9290-f92658dcfa41" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AccountController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AccountController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/DOM/accountDetail.html" afterPath="$PROJECT_DIR$/public/DOM/accountDetail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/ng-js/ng-accountController.js" afterPath="$PROJECT_DIR$/public/assets/ng-js/ng-accountController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/ng-js/ng-meterController.js" afterPath="$PROJECT_DIR$/public/assets/ng-js/ng-meterController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/aside.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/aside.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/navigation.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/navigation.blade.php" />
-    </list>
+    <list default="true" id="3ae3ceb9-783e-487b-9290-f92658dcfa41" name="Default" comment="" />
     <ignored path="utilityManager.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -157,7 +149,7 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="3884" />
+    <option name="x" value="44" />
     <option name="y" value="18" />
     <option name="width" value="1876" />
     <option name="height" value="1062" />
@@ -320,10 +312,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19550000" />
+    <option name="totallyTimeSpent" value="19735000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="3884" y="18" width="1876" height="1062" extended-state="6" />
+    <frame x="44" y="18" width="1876" height="1062" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
