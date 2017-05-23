@@ -20,6 +20,8 @@ Route::group(['middleware' => ['before'=>'auth']], function(){
     Route::resource('accounts','AccountController');
 
     Route::post('updateReading/{id}', ['as' => 'update_reading', 'uses' => 'AccountController@updateReading']);
+    Route::post('updateTopup/{id}', ['as' => 'update_topup', 'uses' => 'AccountController@updateTopup']);
+    Route::post('updateTopupStatus/{id}', ['as' => 'updateTopupStatus', 'uses' => 'AccountController@updateTopupStatus']);
 
 
     Route::get('/permissions/{roleId}/role', ['as' => 'get_all_permissions_for_role', 'uses' => 'PermissionsController@permissions']);

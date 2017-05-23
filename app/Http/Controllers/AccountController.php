@@ -85,6 +85,21 @@ class AccountController extends Controller
         ));
     }
 
+    public function updateTopup(Request $request, $id)
+    {
+
+        Account::where('account_number',$id)->update(array(
+            'topup'=>Input::get('topup')
+        ));
+    }
+
+    public function updateTopupStatus(Request $request, $id)
+    {
+
+        Account::where('account_number',$id)->update(array(
+            'topup_status'=>Input::get('topup_status')
+        ));
+    }
     /**
      * Remove the specified resource from storage.
      *

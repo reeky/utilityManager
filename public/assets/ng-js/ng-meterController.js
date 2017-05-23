@@ -60,8 +60,30 @@ this.meterController = function ($scope, $http, $location, UserService, USER_ID,
                     //     .then(function (response) {
                     //         $scope.accounts = response.data;
                     //     });
-                })
+                });
 
+                if($scope.accounts[0]['topup_status']==1){
+
+                    var remainingTopup = $scope.accounts[0]['topup']-unitsUsed;
+
+                    console.log(remainingTopup);
+
+                    if(remainingTopup < 0){
+                        remainingTopup = 0;
+                    };
+
+
+                    $http.post(UserService.globalRoot + "/updateTopup/"+currentId, {
+                        '_token': $scope._token,
+                        // '_method': 'PUT',
+                        'topup': remainingTopup
+                    }).success(function () {
+                        // $http.get(UserService.globalRoot + "/accounts/"+currentId)
+                        //     .then(function (response) {
+                        //         $scope.accounts = response.data;
+                        //     });
+                    });
+                };
 
 
 

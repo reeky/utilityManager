@@ -5,7 +5,7 @@
 
             <a  id="show-shortcut" data-action="">
                 <span>
-                    {{ Auth::user()->name }}({{ Auth::user()->id }})
+                    {{ Auth::user()->name }}
                 </span>
             </a>
 
@@ -43,24 +43,10 @@
 
             @if(Gate::check('roles_admin') || Gate::check('super_admin') || Gate::check('admin'))
                 <li>
-                    <a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Configuration</span></a>
-                    <ul>
-                        <li>
-                            <a href="" ><span ng-click="gotoAddress()">Address</span></a>
-                        </li>
-                    </ul>
-                </li>
-            @endif
-
-            @if(Gate::check('roles_admin') || Gate::check('super_admin') || Gate::check('admin'))
-                <li>
                     <a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Account</span></a>
                     <ul>
                         <li>
                             <a href="" ><span ng-click="gotoAccountList()">Accounts List</span></a>
-                        </li>
-                        <li>
-                            <a href="" ><span ng-click="gotoAccountDetail()">Account Detail</span></a>
                         </li>
                     </ul>
                 </li>

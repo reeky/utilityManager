@@ -32,7 +32,7 @@
             <div class="well">
                 <h1>Account status</h1>
                 <p>
-                    This is the account status window. The power usage for the last 30 days can be viewed here.
+                    This is the real time view of power usage.
                     <br>
                     <br>
                 </p>
@@ -40,38 +40,45 @@
                 <div class="row">
 
                     <div class="col-sm-3">
-
+                    <div class="col-sm-6">
                         <h3>Units used</h3>
-                        <h1>2000 units</h1>
+                        <h1>{{meterReading}}</h1>
                         <br>
-                        <button class="btn btn-success" ng-click="startMeter()" ng-if="accounts[0].status == 0">Start Meter</button>
-                        <button class="btn btn-danger" ng-click="stopMeter()" ng-if="accounts[0].status == 1">Stop Meter</button>
-                        <a ng-controller="topupModalController" class="btn btn-primary btn-md pull-right header-btn hidden-mobile" ng-click="open(project[0].id)"><i class="fa fa-circle-arrow-up fa-lg"></i>Top up</a>
+                        <button class="btn btn-success" ng-click="startMeter()" ng-if="updatedReading[0].status == 0">Start Meter</button>
+                        <button class="btn btn-danger" ng-click="stopMeter()" ng-if="updatedReading[0].status == 1">Stop Meter</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <h5 ng-if="updatedReading[0].topup_status == 1">Top Up Enabled</h5>
+                        <h5 ng-if="updatedReading[0].topup_status == 0">Top Up Disabled</h5>
+                        <h1>{{topupReading}}</h1>
+                        <br>
+                        <a ng-controller="topupModalController" class="btn btn-primary btn-md header-btn hidden-mobile" ng-click="open(project[0].id)"><i class="fa fa-circle-arrow-up fa-lg"></i>Top up</a>
+                    </div>
                     </div>
                     <div class="col-sm-9">
 
                         <table class="table table-bordered table-striped">
                             <tbody>
                                 <tr>
-                                    <th>Account Number</th>
-                                    <td>{{accounts[0].account_number}}</td>
+                                    <th>Account Numbersss</th>
+                                    <td>{{updatedReading[0].account_number}}</td>
                                 </tr>
                                 <tr>
                                     <th>Meter Number</th>
-                                    <td>{{accounts[0].meter_number}}</td>
+                                    <td>{{updatedReading[0].account_number}}</td>
                                 </tr>
                                 <tr>
                                     <th>Owner</th>
-                                    <td>{{accounts[0].owner}}</td>
+                                    <td>{{updatedReading[0].owner}}</td>
                                 </tr>
                                 <tr>
                                     <th>Service Address</th>
-                                    <td>{{accounts[0].service_address}}</td>
+                                    <td>{{updatedReading[0].service_address}}</td>
                                 </tr>
                                 <tr>
                                     <th>Status</th>
-                                    <td ng-if="accounts[0].status == 1">Active</td>
-                                    <td ng-if="accounts[0].status == 0">Suspended</td>
+                                    <td ng-if="updatedReading[0].status == 1">Active</td>
+                                    <td ng-if="updatedReading[0].status == 0">Suspended</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -165,22 +172,19 @@
 
 
 
-        <form id="frm_createUser" name="frm_createUser" class="smart-form" ng-submit="createAuthor(user)" ng-controller="topupModalController">
+        <form id="frm_createUser" name="frm_createUser" class="smart-form" ng-submit="topupAccount(topup)" ng-controller="topupModalController">
+
+            <fieldset>
+                <button class="btn btn-danger" ng-click="disableTopup()" ng-if="topupStatus == 1">Disable Topup</button>
+                <button class="btn btn-success" ng-click="enableTopup()" ng-if="topupStatus == 0">Enable Topup</button>
+            </fieldset>
 
             <fieldset>
                 <div class="row">
                     <section class="col col-6">
-                        <label class="label">Name:</label>
+                        <label class="label">Amount:</label>
                         <label class="input"> <i class="icon-prepend fa fa-circle-o"></i>
-                            <input id="create_name" autocomplete="off" type="text"  name="name" ng-model="user.name">
-                        </label>
-                    </section>
-                </div>
-                <div class="row">
-                    <section class="col col-lg-12">
-                        <label class="label">Email:</label>
-                        <label class="input"> <i class="icon-prepend fa fa-circle-o"></i>
-                            <input autocomplete="off" type="text"  name="email" ng-model="user.email">
+                            <input id="topupAmount" autocomplete="off" type="number"  name="topupAmount" ng-model="topup.amount">
                         </label>
                     </section>
                 </div>
@@ -188,7 +192,7 @@
 
             <footer>
                 <button type="submit" class="btn btn-primary">
-                    Create
+                    Top Up
                 </button>
                 <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
 

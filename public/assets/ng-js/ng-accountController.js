@@ -21,7 +21,33 @@ this.accountController = function ($scope, $http, $location, UserService, $modal
         console.log('this is the detail function');
         $location.path('/accountDetail/'+id);
         location.reload();
-    }
+    };
+
+    // GET ACCOUNT INFORMATION
+    $scope.updateReading = function(){
+        $http.get(UserService.globalRoot + "/accounts/"+currentId)
+            .then(function (response) {
+                $scope.updatedReading = response.data;
+                $scope.meterReading = $scope.updatedReading[0]['last_reading'];
+                $scope.topupReading = $scope.updatedReading[0]['topup'];
+
+                if($scope.updatedReading[0]['topup_status'] == 1 && $scope.updatedReading[0]['topup'] == 0){
+                    $http.post(UserService.globalRoot + "/accounts/"+currentId, {
+                        '_token': $scope._token,
+                        '_method': 'PUT',
+                        'status': 0
+                    }).success(function () {
+
+                    });
+                    // location.reload();
+                }else{
+
+                };
+
+            });
+    };
+    // END ACCOUNT INFORMATION
+
 
 
     $scope.startMeter = function(){
@@ -34,7 +60,8 @@ this.accountController = function ($scope, $http, $location, UserService, $modal
                 .then(function (response) {
                     $scope.accounts = response.data;
                 });
-        })
+        });
+        location.reload();
     };
 
     $scope.stopMeter = function(){
@@ -47,7 +74,8 @@ this.accountController = function ($scope, $http, $location, UserService, $modal
                 .then(function (response) {
                     $scope.accounts = response.data;
                 });
-        })
+        });
+        location.reload();
     };
 
 
@@ -60,7 +88,7 @@ this.accountController = function ($scope, $http, $location, UserService, $modal
 
     setInterval(function(){
 
-
+        $scope.updateReading();
 
         if ($("#saleschart").length) {
 
@@ -213,18 +241,54 @@ this.accountController = function ($scope, $http, $location, UserService, $modal
 
     };
 
-    this.topupModalControllerInstance = function ($scope, $http, $animate, $modalInstance, CSRF_TOKEN, USER_ID) {
+    this.topupModalControllerInstance = function ($scope, $http, $animate, $modalInstance, $routeParams, UserService, CSRF_TOKEN, USER_ID) {
 
 
-        console.log('inside the topup modal');
+        var currentId = $routeParams.id;;
 
+        $scope.currentID = currentId;
+
+        $http.get(UserService.globalRoot + "/accounts/"+currentId)
+            .then(function (response) {
+                $scope.newAccount = response.data;
+                $scope.topupStatus = $scope.newAccount[0]['topup_status'];
+            });
+
+        $scope.enableTopup = function() {
+            $scope.topupStatus = 1;
+            $http.post(UserService.globalRoot + "/updateTopupStatus/"+currentId, {
+                '_token': $scope._token,
+                'topup_status': 1
+            }).success(function () {
+            });
+        };
+
+        $scope.disableTopup = function() {
+            $scope.topupStatus = 0;
+            $http.post(UserService.globalRoot + "/updateTopupStatus/"+currentId, {
+                '_token': $scope._token,
+                'topup_status': 0
+            }).success(function () {
+            });
+        };
 
         $scope.cancel = function () {
             $modalInstance.dismiss('cancel');
         };
 
-        $scope.createAuthor = function (){
-            console.log('this is the submit form');
+        $scope.topupAccount = function (topup){
+            $http.post(UserService.globalRoot + "/updateTopup/"+currentId, {
+                '_token': $scope._token,
+                // '_method': 'PUT',
+                'topup': topup.amount
+            }).success(function () {
+                // $http.get(UserService.globalRoot + "/accounts/"+currentId)
+                //     .then(function (response) {
+                //         $scope.accounts = response.data;
+                //     });
+            });
+
+            $modalInstance.dismiss('cancel');
         };
 
 
