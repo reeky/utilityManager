@@ -1,3 +1,15 @@
+
+
+/*
+ |--------------------------------------------------------------------------
+ | Address controller
+ |--------------------------------------------------------------------------
+ |
+ | This controller is not used in this iteration of the application
+ |
+ */
+
+
 this.addressController = function ($scope, $http, $location, UserService, $modal, $route, CSRF_TOKEN, $routeParams) {
     $scope.token = CSRF_TOKEN;
     $scope.toggleVisible = UserService.oringinRoute.length;

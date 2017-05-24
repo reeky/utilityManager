@@ -1,4 +1,14 @@
 
+
+/*
+ |--------------------------------------------------------------------------
+ | Permissions controller
+ |--------------------------------------------------------------------------
+ |
+ | This controller handles the permissions page
+ |
+ */
+
 this.permissionsController = function ($scope, $http, $location, UserService, $route, DTOptionsBuilder, CSRF_TOKEN) {
     $scope.token = CSRF_TOKEN;
     $scope.toggleVisible = UserService.oringinRoute.length;

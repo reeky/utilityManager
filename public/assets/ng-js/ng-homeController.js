@@ -1,3 +1,16 @@
+
+
+/*
+ |--------------------------------------------------------------------------
+ | Home controller
+ |--------------------------------------------------------------------------
+ |
+ | This controller handles the home page
+ |
+ */
+
+
+
 this.homeController = function ($scope, $http, $location, UserService, USER_ID) {
     $scope.toggleVisible = UserService.oringinRoute.length;
     $scope.toggle = UserService.oringinRoute;

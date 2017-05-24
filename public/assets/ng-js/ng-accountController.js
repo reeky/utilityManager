@@ -8,6 +8,15 @@ this.accountController = function ($scope, $http, $location, UserService, $modal
 
     $scope.readings = [];
 
+    /*
+     |--------------------------------------------------------------------------
+     | Account controller
+     |--------------------------------------------------------------------------
+     |
+     | This controller controls all the functions related to accounts
+     | Including the top up modal and account listing page
+     |
+     */
 
     // GET ACCOUNT INFORMATION
     $http.get(UserService.globalRoot + "/accounts/")
@@ -49,7 +58,7 @@ this.accountController = function ($scope, $http, $location, UserService, $modal
     // END ACCOUNT INFORMATION
 
 
-
+    // This is the meter start function
     $scope.startMeter = function(){
         $http.post(UserService.globalRoot + "/accounts/"+currentId, {
             '_token': $scope._token,
@@ -63,7 +72,9 @@ this.accountController = function ($scope, $http, $location, UserService, $modal
         });
         location.reload();
     };
+    // end account start
 
+    // This is the meter stop function
     $scope.stopMeter = function(){
         $http.post(UserService.globalRoot + "/accounts/"+currentId, {
             '_token': $scope._token,
@@ -77,9 +88,10 @@ this.accountController = function ($scope, $http, $location, UserService, $modal
         });
         location.reload();
     };
+    //end meter stop
 
 
-    // graph
+    // initialize the live graph
 
     var $chrt_border_color = "#efefef";
     var $chrt_second = "#6595b4";
@@ -189,7 +201,11 @@ this.accountController = function ($scope, $http, $location, UserService, $modal
 
     }, 1000);
 
+    //    end the graph
+
 };
+
+    // this function controls the loading of the top up modal
 
     this.topupModalController = function ($scope, $http, $animate, $modal, CSRF_TOKEN) {
 
@@ -208,6 +224,8 @@ this.accountController = function ($scope, $http, $location, UserService, $modal
             });
         };
 
+        // this is the validation
+        // validation is not utilized
         var $checkoutForm2 = $('#frm_createUser').validate({
             // Rules for form validation
             rules: {
@@ -238,8 +256,13 @@ this.accountController = function ($scope, $http, $location, UserService, $modal
                 error.insertAfter(element.parent());
             }
         });
+    //    end validation
 
     };
+    // end top up modal loading function
+
+
+    // this is the controller for the modal once it has been loaded
 
     this.topupModalControllerInstance = function ($scope, $http, $animate, $modalInstance, $routeParams, UserService, CSRF_TOKEN, USER_ID) {
 
@@ -282,10 +305,7 @@ this.accountController = function ($scope, $http, $location, UserService, $modal
                 // '_method': 'PUT',
                 'topup': topup.amount
             }).success(function () {
-                // $http.get(UserService.globalRoot + "/accounts/"+currentId)
-                //     .then(function (response) {
-                //         $scope.accounts = response.data;
-                //     });
+
             });
 
             $modalInstance.dismiss('cancel');
@@ -293,6 +313,8 @@ this.accountController = function ($scope, $http, $location, UserService, $modal
 
 
     };
+
+//    end modal
 
 
 

@@ -1,5 +1,19 @@
+
+
+/*
+ |--------------------------------------------------------------------------
+ | Aside controller
+ |--------------------------------------------------------------------------
+ |
+ | This controller controls the side menu of the application
+ | Including the top up modal and account listing page
+ |
+ */
+
+
 this.asideController = function ($scope, $http, $location, UserService) {
 
+    // check the user permissions
     $scope.checkPermission = function(page,permission){
         $http.get(globalRoot + "/user/roles/"+permission)
             .then(function (response) {
@@ -12,7 +26,7 @@ this.asideController = function ($scope, $http, $location, UserService) {
                 }
             });
     };
-
+    // end check
 
     $scope.home = function(){
         $location.path('home')
