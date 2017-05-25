@@ -1,4 +1,15 @@
 
+
+/*
+ |--------------------------------------------------------------------------
+ | Users controller
+ |--------------------------------------------------------------------------
+ |
+ | This controller handles the users page
+ |
+ */
+
+
 this.usersController = function ($scope, $http, $location, UserService, $route, DTOptionsBuilder, CSRF_TOKEN) {
     $scope.token = CSRF_TOKEN;
     $scope.toggleVisible = UserService.oringinRoute.length;

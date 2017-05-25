@@ -1,3 +1,15 @@
+
+
+/*
+ |--------------------------------------------------------------------------
+ | Roles controller
+ |--------------------------------------------------------------------------
+ |
+ | This controller handles the roles page
+ |
+ */
+
+
 this.rolesController = function ($scope, $http, $location, UserService, $route, CSRF_TOKEN) {
     $scope.token = CSRF_TOKEN;
     $scope.toggleVisible = UserService.oringinRoute.length;

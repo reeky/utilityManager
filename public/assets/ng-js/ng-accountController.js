@@ -184,7 +184,7 @@ this.accountController = function ($scope, $http, $location, UserService, $modal
                 },
                 tooltip : true,
                 tooltipOpts : {
-                    content : "Your consumption for <b>%x</b> was <span>%y Units</span>",
+                    content : "Your consumption on <b>%x</b> was <span>%y Units</span>",
                     dateFormat : "%y-%m-%d",
                     defaultTheme : false
                 },
